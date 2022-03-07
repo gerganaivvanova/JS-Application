@@ -1,0 +1,21 @@
+{{> header}}
+<!-- My Pets Page ( Only for logged-in users ) -->
+<section id="my-pets-page" class="my-pets">
+    <h1>My Pets</h1>
+    {{#each myPets}}
+    <!-- Display ul: with list-items for every user's pet (if any) -->
+    <ul class="my-pets-list">
+        <li class="otherPet">
+            <h3>Name: {{pet.name}}</h3>
+            <p>Type: {{pet.type}}</p>
+            <p class="img"><img src="{{pet.imageUrl}}"></p>
+            <a class="button" href="#/details/{{pet.petId}}">Details</a>
+        </li>
+    </ul>
+    {{else}}
+    <!-- Display paragraph: If the user doesn't have his own pets  -->
+    <p class="no-pets">No pets in database!</p>
+    {{/each}}
+</section>
+
+{{>footer}}

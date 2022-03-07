@@ -1,0 +1,64 @@
+{{> header}}
+<!-- Details Page ( for Guests and Users ) -->
+{{#if loggedIn}}
+<section id="details-page" class="details">
+    <div class="pet-information">
+        <h3>Name: {{pet.name}}</h3>
+        <p class="type">Type: {{pet.type}}</p>
+        <p class="img"><img src="{{pet.imageUrl}}"></p>
+        <div class="actions">
+            {{#if pet.imCreator}}
+            <!-- Edit/Delete buttons ( Only for creator of this pet )  -->
+            <a class="button" href="#/editPet/{{pet.petId}}">Edit</a>
+            <a class="button" href="/delete/{{pet.petId}}">Delete</a>
+            <div class="likes">
+                <img class="hearts" src="/images/heart.png">
+                <span id="total-likes">Likes: {{pet.numberLikes}}</span>
+            </div>
+            {{else}}
+            <!-- Bonus -->
+            <!-- Like button ( Only for logged-in users, which is not creators of the current pet ) -->
+            {{#if pet.iLikedIt}}
+            <!-- ( for Guests and Users )  -->
+            <div class="likes">
+                <img class="hearts" src="/images/heart.png">
+                <span id="total-likes">Likes: {{pet.numberLikes}}</span>
+            </div>
+            {{else}}
+            <a class="button" href="#/like/{{pet.petId}}">Like</a>
+            <div class="likes">
+                <img class="hearts" src="/images/heart.png">
+                <span id="total-likes">Likes: {{pet.numberLikes}}</span>
+            </div>
+            {{/if}}
+            <!-- Bonus -->
+        </div>
+    </div>
+    <div class="pet-description">
+        <h3>Description:</h3>
+        <p>{{pet.description}}</p>
+    </div>
+            {{/if}}
+
+</section>
+{{else}}
+<section id="details-page" class="details">
+    <div class="pet-information">
+        <h3>Name: {{pet.name}}</h3>
+        <p class="type">Type: {{pet.type}}</p>
+        <p class="img"><img src="{{pet.imageUrl}}"></p>
+        <div class="actions">
+            <div class="likes">
+                <img class="hearts" src="/images/heart.png">
+                <span id="total-likes">Likes: {{pet.numberLikes}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="pet-description">
+        <h3>Description:</h3>
+        <p>{{pet.description}}</p>
+    </div>
+</section>
+{{/if}}
+
+{{> footer}}
